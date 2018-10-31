@@ -17,8 +17,9 @@ resource "aws_security_group" "default" {
   tags        = "${module.label.tags}"
 }
 
+
 resource "aws_security_group_rule" "ingress_security_groups" {
-  count                    = "${var.enabled == "true" ? length(var.security_groups) : 0}"
+  count                    = "${var.enabled == "true" ? (var.security_groups_count > 0 ? var.security_groups_count : length(var.security_groups)) : 0 }"
   description              = "Allow inbound traffic from Security Groups"
   type                     = "ingress"
   from_port                = 0

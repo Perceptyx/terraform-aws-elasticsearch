@@ -43,10 +43,22 @@ variable "security_groups" {
   description = "List of security group IDs to be allowed to connect to the cluster"
 }
 
+variable "security_groups_count" {
+  type        = "string"
+  default     = 0
+  description = "Number of security groups if they are not created yet"
+}
+
 variable "allowed_cidr_blocks" {
   type        = "list"
   default     = []
   description = "List of CIDR blocks to be allowed to connect to the cluster"
+}
+
+variable "allowed_cidr_blocks_count" {
+  type        = "string"
+  default     = 0
+  description = "Number of allowed_cidr_bloks if they are not created yet"
 }
 
 variable "vpc_id" {
